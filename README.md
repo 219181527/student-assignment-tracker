@@ -32,6 +32,8 @@ The system aims to:
 ```
 student-assignment-tracker
 │
+├── .gitignore
+├── LICENSE
 ├── README.md
 ├── SPECIFICATION.md
 └── ARCHITECTURE.md
