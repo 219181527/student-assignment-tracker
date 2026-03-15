@@ -80,3 +80,33 @@ Rel(api, db, "Reads and writes data")
 
 UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
 ```
+
+---
+
+# 7. Component Diagram
+
+The Component Diagram provides a more detailed view of the **Backend API container** and shows the internal components responsible for managing assignments, users, and system operations.
+
+```mermaid
+C4Component
+title Component Diagram — Backend API
+
+Container_Boundary(api, "Backend API (Node.js / Express)") {
+
+Component(auth, "Authentication Component", "Handles user login and access control")
+
+Component(user_mgmt, "User Management Component", "Manages student and lecturer accounts")
+
+Component(assignments, "Assignment Management Component", "Handles creation, updates, and tracking of assignments")
+
+Component(submissions, "Submission Tracking Component", "Tracks assignment completion and submissions")
+
+}
+
+ContainerDb(database, "Database", "PostgreSQL")
+
+Rel(auth, database, "Reads/Writes user credentials")
+Rel(user_mgmt, database, "Manages user data")
+Rel(assignments, database, "Stores assignments")
+Rel(submissions, database, "Stores submission data")
+```
