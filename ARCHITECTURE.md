@@ -36,15 +36,17 @@ The System Context Diagram shows how the system interacts with external users.
 
 ```mermaid
 C4Context
-title System Context Diagram for Student Assignment Tracker
+title System Context Diagram — Student Assignment Tracker
 
 Person(student, "Student", "Tracks assignments and deadlines")
 Person(lecturer, "Lecturer", "Creates and manages assignments")
 
-System(system, "Student Assignment Tracker", "System for managing assignments and deadlines")
+System(system, "Student Assignment Tracker", "Platform for managing assignments and deadlines")
 
-Rel(student, system, "Views and manages assignments")
+Rel(student, system, "Views assignments and deadlines")
 Rel(lecturer, system, "Creates and updates assignments")
+
+UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
 ```
 
 ---
@@ -55,24 +57,26 @@ The Container Diagram shows the high-level technical building blocks of the syst
 
 ```mermaid
 C4Container
-title Container Diagram for Student Assignment Tracker
+title Container Diagram — Student Assignment Tracker
 
 Person(student, "Student")
 Person(lecturer, "Lecturer")
 
-System_Boundary(system, "Student Assignment Tracker") {
+System_Boundary(system, "Student Assignment Tracker System") {
 
-Container(web_app, "Web Application", "HTML, CSS, JavaScript", "User interface for students and lecturers")
+Container(web, "Web Application", "HTML, CSS, JavaScript", "User interface for students and lecturers")
 
-Container(api, "Backend API", "Node.js / Express", "Handles application logic and communication")
+Container(api, "Backend API", "Node.js / Express", "Handles business logic and processes requests")
 
-Container(database, "Database", "PostgreSQL", "Stores users, assignments, and submissions")
+Container(db, "Database", "PostgreSQL", "Stores users, assignments, and submission data")
 
 }
 
-Rel(student, web_app, "Uses")
-Rel(lecturer, web_app, "Uses")
+Rel(student, web, "Uses")
+Rel(lecturer, web, "Uses")
 
-Rel(web_app, api, "API Calls")
-Rel(api, database, "Reads/Writes Data")
+Rel(web, api, "Sends API requests")
+Rel(api, db, "Reads and writes data")
+
+UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
 ```
