@@ -1,0 +1,112 @@
+# Student Assignment Tracker – System Architecture
+
+## 1. Project Title
+
+Student Assignment Tracker
+
+---
+
+## 2. Domain
+
+Education Technology (EdTech)
+
+The system operates within the education domain and focuses on helping students and lecturers manage coursework and assignment deadlines.
+
+---
+
+## 3. Problem Statement
+
+Students often struggle to track assignments and deadlines across multiple courses. Lecturers also need an efficient way to distribute assignments and communicate deadlines to students. The Student Assignment Tracker provides a centralized platform where assignments can be created, tracked, and managed efficiently.
+
+---
+
+# 4. C4 Architecture Model
+
+The system architecture is represented using the **C4 model**, which describes the system at different levels of abstraction:
+
+1. System Context Diagram
+2. Container Diagram
+3. Component Diagram
+
+---
+
+# 5. System Context Diagram
+
+The System Context Diagram shows how the system interacts with external users.
+
+```mermaid
+C4Context
+title System Context Diagram — Student Assignment Tracker
+
+Person(student, "Student", "Tracks assignments and deadlines")
+Person(lecturer, "Lecturer", "Creates and manages assignments")
+
+System(system, "Student Assignment Tracker", "Platform for managing assignments and deadlines")
+
+Rel(student, system, "Views assignments and deadlines")
+Rel(lecturer, system, "Creates and updates assignments")
+
+UpdateLayoutConfig($c4ShapeInRow="1", $c4BoundaryInRow="1")
+```
+
+---
+
+# 6. Container Diagram
+
+The Container Diagram shows the high-level technical building blocks of the system.
+
+```mermaid
+C4Container
+title Container Diagram — Student Assignment Tracker
+
+Person(student, "Student")
+Person(lecturer, "Lecturer")
+
+System_Boundary(system, "Student Assignment Tracker System") {
+
+Container(web, "Web Application", "HTML, CSS, JavaScript", "User interface for students and lecturers")
+
+Container(api, "Backend API", "Node.js / Express", "Handles business logic and processes requests")
+
+Container(db, "Database", "PostgreSQL", "Stores users, assignments, and submission data")
+
+}
+
+Rel(student, web, "Uses")
+Rel(lecturer, web, "Uses")
+
+Rel(web, api, "Sends API requests")
+Rel(api, db, "Reads and writes data")
+
+UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+```
+
+---
+
+# 7. Component Diagram
+
+The Component Diagram provides a more detailed view of the **Backend API container** and shows the internal components responsible for managing assignments, users, and system operations.
+
+```mermaid
+C4Component
+title Component Diagram — Backend API
+
+Container_Boundary(api, "Backend API (Node.js / Express)") {
+
+Component(auth, "Authentication Component", "Handles user login and access control")
+
+Component(user_mgmt, "User Management Component", "Manages student and lecturer accounts")
+
+Component(assignments, "Assignment Management Component", "Handles creation, updates, and tracking of assignments")
+
+Component(submissions, "Submission Tracking Component", "Tracks assignment completion and submissions")
+
+}
+
+ContainerDb(database, "Database", "PostgreSQL")
+
+Rel(auth, database, "Reads/Writes user credentials")
+Rel(user_mgmt, database, "Manages user data")
+Rel(assignments, database, "Stores assignments")
+Rel(submissions, database, "Stores submission data")
+```
