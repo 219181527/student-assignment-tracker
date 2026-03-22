@@ -2,9 +2,10 @@
 
 ## Project Overview
 
-The **Student Assignment Tracker** is a software system designed to help students manage their academic workload efficiently. The system allows students to track assignments, monitor deadlines, and mark tasks as completed. Lecturers can also create and manage assignments for their courses.
+The **Student Assignment Tracker** is a software system designed to help students manage their academic workload efficiently. The system allows students to track assignments, monitor deadlines, and manage submissions, while lecturers can create and manage coursework.
 
-The goal of this system is to reduce missed deadlines and improve organization for students by providing a centralized platform for assignment management.
+The project also includes detailed **system specification, stakeholder analysis, and requirements engineering documentation**, ensuring a well-structured and scalable system design.
+
 
 ---
 
@@ -30,13 +31,23 @@ The system aims to:
 ## Repository Structure
 
 ```
+## Repository Structure
+
+```text
 student-assignment-tracker
 │
 ├── .gitignore
 ├── LICENSE
 ├── README.md
 ├── SPECIFICATION.md
-└── ARCHITECTURE.md
+├── ARCHITECTURE.md
+│
+├── docs
+│   ├── STAKEHOLDERS.md
+│   ├── REQUIREMENTS.md
+│   └── REFLECTION.md
+```
+
 ```
 
 ---
@@ -47,6 +58,10 @@ Project documentation can be found in the following files:
 
 * 📄 [System Specification](./SPECIFICATION.md)
 * 🏗️ [System Architecture](./ARCHITECTURE.md)
+* 👥 [Stakeholder Analysis](./docs/STAKEHOLDERS.md)
+* ⚙️ [System Requirements](./docs/REQUIREMENTS.md)
+* 🧠 [Reflection](./docs/REFLECTION.md)
+
 
 ---
 
