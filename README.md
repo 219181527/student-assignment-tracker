@@ -30,7 +30,6 @@ The system aims to:
 
 ## Repository Structure
 
-```
 ## Repository Structure
 
 ```text
@@ -48,7 +47,7 @@ student-assignment-tracker
 │   └── REFLECTION.md
 ```
 
-```
+
 
 ---
 
