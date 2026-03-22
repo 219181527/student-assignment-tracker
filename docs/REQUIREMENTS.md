@@ -100,3 +100,51 @@ The system shall restrict access based on user roles (student or lecturer).
 The system shall store user and assignment data securely in a database.
 
 ---
+
+## 2. Non-Functional Requirements
+
+The following non-functional requirements define the quality attributes of the system.
+
+---
+
+### 2.1 Usability
+
+**NFR1:** The system shall provide a user-friendly interface that allows users to navigate and perform tasks with minimal training.
+
+**NFR2:** The system interface shall be responsive and accessible on both desktop and mobile devices.
+
+---
+
+### 2.2 Deployability
+
+**NFR3:** The system shall be deployable on both Windows and Linux server environments.
+
+---
+
+### 2.3 Maintainability
+
+**NFR4:** The system shall include clear documentation to support future maintenance and updates.
+
+**NFR5:** The system shall be modular to allow independent updates to components without affecting the entire system.
+
+---
+
+### 2.4 Scalability
+
+**NFR6:** The system shall support at least 1,000 concurrent users without performance degradation.
+
+---
+
+### 2.5 Security
+
+**NFR7:** All user data shall be encrypted using industry-standard encryption methods.
+
+**NFR8:** The system shall enforce role-based access control to protect sensitive data.
+
+---
+
+### 2.6 Performance
+
+**NFR9:** The system shall load assignment data within 2 seconds under normal operating conditions.
+
+**NFR10:** The system shall process user actions (e.g., login, assignment creation) within 3 seconds.
