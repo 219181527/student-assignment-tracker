@@ -4,7 +4,7 @@
 
 The **Student Assignment Tracker** is a software system designed to help students manage their academic workload efficiently. The system allows students to track assignments, monitor deadlines, and manage submissions, while lecturers can create and manage coursework.
 
-The project includes comprehensive **system specification, architecture design, stakeholder analysis, requirements engineering, use case modeling, and test case development**, ensuring a well-structured and scalable system.
+The project demonstrates a complete **Software Engineering lifecycle**, including requirements engineering, system design, and Agile project management using GitHub tools.
 
 ---
 
@@ -27,6 +27,18 @@ The system aims to:
 
 ---
 
+## Agile Project Management
+
+This project applies **Agile (Scrum) principles** using GitHub:
+
+* 📌 User Stories implemented as GitHub Issues
+* 🏷️ Labels used for prioritisation and categorisation
+* 📊 Project Board (Kanban) used to track progress
+* 🎯 Milestones used to define sprint goals
+* 📅 Sprint Planning documented for development cycles
+
+---
+
 ## Repository Structure
 
 ```text
@@ -41,10 +53,13 @@ student-assignment-tracker
 ├── docs
 │   ├── STAKEHOLDERS.md
 │   ├── REQUIREMENTS.md
-│   ├── REFLECTION.md
 │   ├── USE_CASES.md
 │   ├── USE_CASE_SPECIFICATIONS.md
 │   ├── TEST_CASES.md
+│   ├── USER_STORIES.md
+│   ├── PRODUCT_BACKLOG.md
+│   ├── SPRINT_PLANNING.md
+│   ├── REFLECTION.md
 │   └── USE_CASE_TEST_REFLECTION.md
 ```
 
@@ -54,15 +69,46 @@ student-assignment-tracker
 
 Project documentation can be found in the following files:
 
-* 📄 [System Specification](./SPECIFICATION.md)
-* 🏗️ [System Architecture](./ARCHITECTURE.md)
-* 👥 [Stakeholder Analysis](./docs/STAKEHOLDERS.md)
-* ⚙️ [System Requirements](./docs/REQUIREMENTS.md)
-* 🧠 [Requirements Reflection](./docs/REFLECTION.md)
-* 🔁 [Use Case Diagram](./docs/USE_CASES.md)
-* 📘 [Use Case Specifications](./docs/USE_CASE_SPECIFICATIONS.md)
-* 🧪 [Test Cases](./docs/TEST_CASES.md)
-* 🧠 [Use Case & Testing Reflection](./docs/USE_CASE_TEST_REFLECTION.md)
+### 📄 Core Documents
+
+* [System Specification](./SPECIFICATION.md)
+* [System Architecture](./ARCHITECTURE.md)
+
+### 👥 Requirements Engineering
+
+* [Stakeholder Analysis](./docs/STAKEHOLDERS.md)
+* [System Requirements](./docs/REQUIREMENTS.md)
+
+### 📊 Analysis & Design
+
+* [Use Case Diagram & Description](./docs/USE_CASES.md)
+* [Use Case Specifications](./docs/USE_CASE_SPECIFICATIONS.md)
+
+### 🧪 Testing
+
+* [Test Cases](./docs/TEST_CASES.md)
+
+### 🚀 Agile Planning
+
+* [User Stories](./docs/USER_STORIES.md)
+* [Product Backlog](./docs/PRODUCT_BACKLOG.md)
+* [Sprint Planning](./docs/SPRINT_PLANNING.md)
+
+### 🧠 Reflection
+
+* [Reflection](./docs/REFLECTION.md)
+* [Use Case & Testing Reflection](./docs/USE_CASE_TEST_REFLECTION.md)
+
+---
+
+## Project Management
+
+The project uses GitHub tools to support Agile development:
+
+* Issues for tracking user stories
+* Labels for organisation and prioritisation
+* Project board for workflow management
+* Milestones for sprint planning
 
 ---
 
