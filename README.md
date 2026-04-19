@@ -81,10 +81,10 @@ student-assignment-tracker
 │   ├── TEMPLATE_ANALYSIS.md         
 │   ├── KANBAN_EXPLANATION.md         
 │   ├── project_reflection.md         
-│   ├── MODEL_INTEGRATION.md          ← Assignment 8
+│   ├── MODEL_INTEGRATION.md          
 │   │
-│   ├── state_diagrams/              ← Assignment 8
-│   ├── activity_diagrams/           ← Assignment 8
+│   ├── state_diagrams/             
+│   ├── activity_diagrams/           
 │   │
 │   ├── REFLECTION.md
 │   └── USE_CASE_TEST_REFLECTION.md
@@ -136,7 +136,7 @@ student-assignment-tracker
 
 * [Template Analysis and Selection](./docs/TEMPLATE_ANALYSIS.md)
 * [Kanban Board Explanation](./docs/KANBAN_EXPLANATION.md)
-* [Project Reflection](./docs/KANBAN_REFLECTION.md)
+* [Kanban Reflection](./docs/KANBAN_REFLECTION.md)
 
 ---
 
