@@ -12,7 +12,7 @@ stateDiagram-v2
 
     Completed --> Archived : Stored for records
 
----
+```
 
 ```markdown
 

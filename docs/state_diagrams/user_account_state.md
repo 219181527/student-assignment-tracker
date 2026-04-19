@@ -17,7 +17,7 @@ stateDiagram-v2
     Active --> Deleted : Account removed by admin (UC10)
 
   
----
+```
 
 
 ```markdown

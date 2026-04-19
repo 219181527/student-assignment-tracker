@@ -14,7 +14,7 @@ stateDiagram-v2
     Completed --> Archived : Stored for records
     Dropped --> Archived : Stored for records
 
----
+```
 
 ```markdown
 

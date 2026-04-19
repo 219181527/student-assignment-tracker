@@ -12,7 +12,7 @@ stateDiagram-v2
 
     Read --> Archived : Stored for history
 
----
+```
 
 ```markdown
 

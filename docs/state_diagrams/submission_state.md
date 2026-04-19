@@ -14,7 +14,7 @@ stateDiagram-v2
     Graded --> Archived : Stored for records
 
   
----
+```
 
 ```markdown
 ## 📌 Explanation

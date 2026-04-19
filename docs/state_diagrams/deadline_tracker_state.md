@@ -15,7 +15,7 @@ stateDiagram-v2
 
     Completed --> Archived : Task completed and stored
 
----
+```
 
 ```markdown
 
