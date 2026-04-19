@@ -59,4 +59,3 @@ This activity diagram represents how the system generates, sends, and tracks not
   - US-009: Receive notifications
 
 This workflow ensures timely notification delivery, retry handling, and user interaction tracking.
----

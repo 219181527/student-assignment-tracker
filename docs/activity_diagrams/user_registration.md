@@ -43,4 +43,3 @@ This activity diagram represents the process of user registration in the system.
   - US-001: Register account
 
 This workflow ensures proper validation and secure account creation.
----

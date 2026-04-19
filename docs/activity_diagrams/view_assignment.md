@@ -46,4 +46,3 @@ This activity diagram represents the process of viewing assignments within the s
   - US-004: View assignments
 
 This workflow ensures that assignment data is retrieved and displayed efficiently, providing users with real-time access to academic tasks.
----
