@@ -18,7 +18,6 @@ flowchart TD
 ```
 ---
 
-```markdown
 
 ## 📌 Explanation
 

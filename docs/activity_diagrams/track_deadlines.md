@@ -31,7 +31,6 @@ flowchart TD
 ```
 ---
 
-```markdown
 ## 📌 Explanation
 
 This activity diagram represents how the system tracks assignment deadlines and updates their status accordingly.

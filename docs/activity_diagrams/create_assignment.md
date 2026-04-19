@@ -21,7 +21,7 @@ flowchart TD
 ```
 ---
 
-```markdown
+
 ## 📌 Explanation
 
 This activity diagram represents the process of creating and publishing an assignment by a lecturer.

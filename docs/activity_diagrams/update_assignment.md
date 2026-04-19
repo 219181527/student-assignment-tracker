@@ -23,7 +23,6 @@ flowchart TD
 ```
 ---
 
-```markdown
 ## 📌 Explanation
 
 This activity diagram represents the process of updating an existing assignment by a lecturer.
