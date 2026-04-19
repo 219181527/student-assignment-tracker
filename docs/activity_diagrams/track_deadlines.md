@@ -29,6 +29,7 @@ flowchart TD
     K -->|No| G
 
 ```
+---
 
 ```markdown
 ## 📌 Explanation
@@ -57,3 +58,4 @@ This activity diagram represents how the system tracks assignment deadlines and 
   - US-007: Track deadlines
 
 This workflow ensures that deadlines are actively monitored, users are notified, and assignment status is updated appropriately.
+---

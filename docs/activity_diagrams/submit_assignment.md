@@ -26,6 +26,7 @@ flowchart TD
     H --> K
 
 ```
+---
 
 ```markdown
 
@@ -59,3 +60,4 @@ This activity diagram represents the process of submitting an assignment within 
   - US-007: Track deadlines
 
 This workflow ensures proper handling of submissions, including deadline validation and late submission rules.
+---

@@ -21,6 +21,7 @@ flowchart TD
     H --> I([End])
 
 ```
+---
 
 ```markdown
 ## 📌 Explanation
@@ -48,3 +49,4 @@ This activity diagram represents the process of updating an existing assignment 
   - US-005: Update assignments
 
 This workflow ensures that assignment updates are validated and correctly stored, maintaining data integrity within the system.
+---

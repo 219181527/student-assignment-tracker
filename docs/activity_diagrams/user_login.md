@@ -16,6 +16,7 @@ flowchart TD
 
     F --> G([End])
 ```
+---
 
 ```markdown
 
@@ -42,3 +43,4 @@ This activity diagram represents the user authentication process within the syst
   - US-002: User login
 
 This workflow ensures secure access control and proper handling of invalid login attempts.
+---
