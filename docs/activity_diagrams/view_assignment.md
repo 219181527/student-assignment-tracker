@@ -11,7 +11,7 @@ flowchart TD
 
     D --> E{Assignments available?}
 
-    E -->|No| F[Display "No assignments available"]
+    E -->|No| F["Display 'No assignments available'"]
     F --> G([End])
 
     E -->|Yes| H[Display assignment list]
