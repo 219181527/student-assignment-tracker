@@ -14,7 +14,6 @@ stateDiagram-v2
 
     Finalized --> Archived : Stored for records
 
----
 
 ```markdown
 
