@@ -4,7 +4,7 @@
 
 The **Student Assignment Tracker** is a software system designed to help students manage their academic workload efficiently. The system enables students to track assignments, monitor deadlines, and manage submissions, while lecturers can create and manage coursework.
 
-This project demonstrates a complete **Software Engineering lifecycle**, including requirements engineering, system design, and Agile project management using GitHub tools.
+This project demonstrates a complete **Software Engineering lifecycle**, including requirements engineering, system design, Agile project management, and system modeling using UML diagrams.
 
 ---
 
@@ -81,6 +81,11 @@ student-assignment-tracker
 │   ├── TEMPLATE_ANALYSIS.md         
 │   ├── KANBAN_EXPLANATION.md         
 │   ├── project_reflection.md         
+│   ├── MODEL_INTEGRATION.md          ← Assignment 8
+│   │
+│   ├── state_diagrams/              ← Assignment 8
+│   ├── activity_diagrams/           ← Assignment 8
+│   │
 │   ├── REFLECTION.md
 │   └── USE_CASE_TEST_REFLECTION.md
 │
@@ -97,19 +102,27 @@ student-assignment-tracker
 * [System Specification](./SPECIFICATION.md)
 * [System Architecture](./ARCHITECTURE.md)
 
+---
+
 ### 👥 Requirements Engineering
 
 * [Stakeholder Analysis](./docs/STAKEHOLDERS.md)
 * [System Requirements](./docs/REQUIREMENTS.md)
+
+---
 
 ### 📊 Analysis & Design
 
 * [Use Case Diagram & Description](./docs/USE_CASES.md)
 * [Use Case Specifications](./docs/USE_CASE_SPECIFICATIONS.md)
 
+---
+
 ### 🧪 Testing
 
 * [Test Cases](./docs/TEST_CASES.md)
+
+---
 
 ### 🚀 Agile Planning
 
@@ -117,16 +130,47 @@ student-assignment-tracker
 * [Product Backlog](./docs/PRODUCT_BACKLOG.md)
 * [Sprint Planning](./docs/SPRINT_PLANNING.md)
 
-### 📊 Project Management (Assignment 7)
+---
+
+### 📊 Project Management
 
 * [Template Analysis and Selection](./docs/TEMPLATE_ANALYSIS.md)
 * [Kanban Board Explanation](./docs/KANBAN_EXPLANATION.md)
 * [Project Reflection](./docs/KANBAN_REFLECTION.md)
 
-### 🧠 Additional Reflection
+---
 
-* [General Reflection](./docs/REFLECTION.md)
-* [Use Case & Testing Reflection](./docs/USE_CASE_TEST_REFLECTION.md)
+## 🧩 System Modeling
+
+### 🔄 Object State Diagrams
+
+* [Assignment State](./docs/state_diagrams/assignment_state.md)
+* [User Account State](./docs/state_diagrams/user_account_state.md)
+* [Submission State](./docs/state_diagrams/submission_state.md)
+* [Notification State](./docs/state_diagrams/notification_state.md)
+* [Deadline Tracker State](./docs/state_diagrams/deadline_tracker_state.md)
+* [Course State](./docs/state_diagrams/course_state.md)
+* [Enrollment State](./docs/state_diagrams/enrollment_state.md)
+* [Grade State](./docs/state_diagrams/grade_state.md)
+
+---
+
+### 🔄 Activity Diagrams
+
+* [User Registration](./docs/activity_diagrams/user_registration.md)
+* [User Login](./docs/activity_diagrams/user_login.md)
+* [Create Assignment](./docs/activity_diagrams/create_assignment.md)
+* [View Assignments](./docs/activity_diagrams/view_assignments.md)
+* [Update Assignment](./docs/activity_diagrams/update_assignment.md)
+* [Track Deadlines](./docs/activity_diagrams/track_deadlines.md)
+* [Submit Assignment](./docs/activity_diagrams/submit_assignment.md)
+* [Receive Notifications](./docs/activity_diagrams/receive_notifications.md)
+
+---
+
+### 📌 Model Integration
+
+* [Model Integration & Justification](./docs/MODEL_INTEGRATION.md)
 
 ---
 
@@ -149,4 +193,6 @@ GitHub: https://github.com/219181527
 
 ---
 
+## 📌 Notes
 
+This project demonstrates a complete Software Engineering lifecycle, including requirements analysis, system design, Agile project management, and UML-based system modeling.
