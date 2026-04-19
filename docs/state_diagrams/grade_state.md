@@ -9,7 +9,7 @@ stateDiagram-v2
     Released --> Updated : Grade adjusted / remark
     Updated --> Finalized : Final grade confirmed
     Finalized --> Archived : Stored for records
-```  <-- ADD THESE THREE BACKTICKS HERE
+```
 
 ```markdown
 
