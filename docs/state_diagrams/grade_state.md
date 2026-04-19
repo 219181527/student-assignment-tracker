@@ -1,5 +1,7 @@
 # 🏆 Grade State Transition Diagram
 
+# 🏆 Grade State Transition Diagram
+
 ```mermaid
 stateDiagram-v2
     [*] --> Pending
