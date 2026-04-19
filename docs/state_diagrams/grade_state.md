@@ -4,17 +4,12 @@
 ```mermaid
 stateDiagram-v2
     [*] --> Pending
-
     Pending --> Assigned : Lecturer grades submission
-
     Assigned --> Released : Grade visible to student
-
     Released --> Updated : Grade adjusted / remark
-
     Updated --> Finalized : Final grade confirmed
-
     Finalized --> Archived : Stored for records
-
+```  <-- ADD THESE THREE BACKTICKS HERE
 
 ```markdown
 
