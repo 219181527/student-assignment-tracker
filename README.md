@@ -4,7 +4,7 @@
 
 The **Student Assignment Tracker** is a software system designed to help students manage their academic workload efficiently. The system enables students to track assignments, monitor deadlines, and manage submissions, while lecturers can create and manage coursework.
 
-This project demonstrates a complete **Software Engineering lifecycle**, including requirements engineering, system design, Agile project management, and system modeling using UML diagrams.
+This project demonstrates a complete **Software Engineering lifecycle**, including requirements engineering, system design, Agile project management, and UML modeling.
 
 ---
 
@@ -78,16 +78,18 @@ student-assignment-tracker
 │   ├── USER_STORIES.md
 │   ├── PRODUCT_BACKLOG.md
 │   ├── SPRINT_PLANNING.md
-│   ├── TEMPLATE_ANALYSIS.md         
-│   ├── KANBAN_EXPLANATION.md         
-│   ├── project_reflection.md         
-│   ├── MODEL_INTEGRATION.md          
-│   │
-│   ├── state_diagrams/             
-│   ├── activity_diagrams/           
-│   │
+│   ├── TEMPLATE_ANALYSIS.md
+│   ├── KANBAN_EXPLANATION.md
+│   ├── KANBAN_REFLECTION.md
 │   ├── REFLECTION.md
-│   └── USE_CASE_TEST_REFLECTION.md
+│   ├── USE_CASE_TEST_REFLECTION.md
+│   ├── MODEL_INTEGRATION.md
+│   ├── DOMAIN_MODEL.md
+│   ├── CLASS_DIAGRAM.md
+│   ├── CLASS_MODEL_REFLECTION.md
+│   │
+│   ├── state_diagrams/
+│   ├── activity_diagrams/
 │
 ├── screenshots/
 │   └── kanban_board.png
@@ -168,6 +170,14 @@ student-assignment-tracker
 
 ---
 
+### 🏗️ Domain & Class Modeling (Assignment 9)
+
+* [Domain Model](./docs/DOMAIN_MODEL.md)
+* [Class Diagram](./docs/CLASS_DIAGRAM.md)
+* [Class Model Reflection](./docs/CLASS_MODEL_REFLECTION.md)
+
+---
+
 ### 📌 Model Integration
 
 * [Model Integration & Justification](./docs/MODEL_INTEGRATION.md)
@@ -195,4 +205,13 @@ GitHub: https://github.com/219181527
 
 ## 📌 Notes
 
-This project demonstrates a complete Software Engineering lifecycle, including requirements analysis, system design, Agile project management, and UML-based system modeling.
+This project demonstrates a complete Software Engineering lifecycle, including:
+
+* Requirements Engineering
+* System Architecture
+* Agile Project Management
+* UML State Diagrams
+* Activity Diagrams
+* Domain Modeling
+* Object-Oriented Design (Class Diagram)
+* Reflection and Design Justification
