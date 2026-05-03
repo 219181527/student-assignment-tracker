@@ -15,9 +15,6 @@ Justification: The Assignment constructor already has 7 parameters. As
                assignment templates (e.g. QuizDirector, EssayDirector).
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from datetime import date, timedelta
 from abc import ABC, abstractmethod
 

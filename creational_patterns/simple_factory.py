@@ -13,9 +13,6 @@ Justification: Registration endpoints receive a role field from a form.
                and keeps object creation in one place.
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from src.student import Student
 from src.lecturer import Lecturer
 from src.user import User

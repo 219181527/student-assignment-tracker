@@ -15,9 +15,6 @@ Justification: Cloning is cheaper than re-running full construction logic
                The prototype registry caches named templates for reuse.
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 import copy
 from datetime import date, timedelta
 from typing import Dict

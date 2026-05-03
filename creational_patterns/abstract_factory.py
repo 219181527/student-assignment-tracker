@@ -16,9 +16,6 @@ Justification: If a new role (e.g. "Teaching Assistant") is added later,
                always compatible with each other.
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 from abc import ABC, abstractmethod
 from typing import List
 

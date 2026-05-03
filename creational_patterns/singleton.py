@@ -13,9 +13,6 @@ Justification: Notification dispatch must be centralised to prevent
                pattern holds in a multi-threaded web server context.
 """
 
-import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
 import threading
 from datetime import datetime
 from typing import List, Dict

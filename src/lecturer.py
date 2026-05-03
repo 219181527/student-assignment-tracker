@@ -3,8 +3,16 @@ lecturer.py — Lecturer class for Student Assignment Tracker
 Extends User. Implements Lecturer entity from Class Diagram (Assignment 9).
 """
 
-from typing import List
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, List
 from src.user import User
+
+if TYPE_CHECKING:
+    # Imported only during type checking — never at runtime.
+    # Breaks the circular import cycle:  lecturer → assignment → lecturer
+    from src.assignment import Assignment
+    from src.submission import Submission
 
 
 class Lecturer(User):
@@ -25,7 +33,7 @@ class Lecturer(User):
     # ------------------------------------------------------------------ #
 
     def create_assignment(self, course, title: str, description: str,
-                          due_date, total_marks: int) -> "Assignment":
+                          due_date, total_marks: int) -> Assignment:
         """Create a new assignment and associate it with a course."""
         from src.assignment import Assignment
         assignment = Assignment(
@@ -41,7 +49,7 @@ class Lecturer(User):
         course.add_assignment(assignment)
         return assignment
 
-    def update_assignment(self, assignment, title: str = None, due_date=None) -> "Assignment":
+    def update_assignment(self, assignment, title: str = None, due_date=None) -> Assignment:
         """Update an existing assignment's mutable fields."""
         if assignment not in self._assignments:
             raise PermissionError("Lecturer can only update their own assignments.")

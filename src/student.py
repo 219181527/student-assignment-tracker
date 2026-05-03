@@ -3,8 +3,16 @@ student.py — Student class for Student Assignment Tracker
 Extends User. Implements Student entity from Class Diagram (Assignment 9).
 """
 
-from typing import List
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, List
 from src.user import User
+
+if TYPE_CHECKING:
+    from src.enrollment import Enrollment
+    from src.submission import Submission
+    from src.assignment import Assignment
+    from src.notification import Notification
 
 
 class Student(User):
