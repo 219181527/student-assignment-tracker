@@ -67,6 +67,9 @@ Two additional columns were added beyond the default GitHub template:
 
 | Tool | Purpose |
 |------|---------|
+| Python 3.14 | Primary implementation language for all source classes and design patterns |
+| pytest 9.x | Unit testing framework — 121 tests across 6 test modules |
+| pytest-cov | Test coverage reporting — 77% coverage across `src/` and `creational_patterns/` |
 | Markdown | All documentation and deliverables |
 | Mermaid.js | UML diagrams (class, state, activity) embedded in Markdown |
 | GitHub Issues | User story and task tracking |
@@ -83,8 +86,41 @@ student-assignment-tracker
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── CHANGELOG.md
 ├── SPECIFICATION.md
 ├── ARCHITECTURE.md
+├── pytest.ini
+│
+├── src/                               ← Class implementations (Assignment 10)
+│   ├── __init__.py
+│   ├── user.py
+│   ├── student.py
+│   ├── lecturer.py
+│   ├── course.py
+│   ├── assignment.py
+│   ├── submission.py
+│   ├── grade.py
+│   ├── notification.py
+│   └── enrollment.py
+│
+├── creational_patterns/               ← All 6 creational design patterns (Assignment 10)
+│   ├── __init__.py
+│   ├── simple_factory.py
+│   ├── factory_method.py
+│   ├── abstract_factory.py
+│   ├── builder.py
+│   ├── prototype.py
+│   └── singleton.py
+│
+├── tests/                             ← Unit tests with coverage (Assignment 10)
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_simple_factory.py
+│   ├── test_factory_method.py
+│   ├── test_abstract_factory.py
+│   ├── test_builder.py
+│   ├── test_prototype.py
+│   └── test_singleton.py
 │
 ├── docs/
 │   ├── STAKEHOLDERS.md
@@ -104,7 +140,6 @@ student-assignment-tracker
 │   ├── DOMAIN_MODEL.md
 │   ├── CLASS_DIAGRAM.md
 │   ├── CLASS_MODEL_REFLECTION.md
-│   │
 │   ├── state_diagrams/
 │   └── activity_diagrams/
 │
@@ -191,7 +226,52 @@ student-assignment-tracker
 
 ---
 
-### 🏗️ Domain & Class Modelling 
+## 💻 Implementation (Assignment 10)
+
+### 🐍 Language Choice — Python 3.14
+
+Python was chosen for its clean, readable syntax that maps directly to UML class diagrams, making the implementation-to-design traceability easy to verify. Python's `abc` module provides native abstract base class support for the Factory Method and Abstract Factory patterns, and `threading.Lock` enables production-grade thread safety in the Singleton.
+
+### 📦 Source Classes (`/src`)
+
+| Class | File | Key Responsibility |
+|-------|------|--------------------|
+| `User` | `user.py` | Base class — authentication, registration, profile |
+| `Student` | `student.py` | Deadline tracking, assignment submission, enrollment access |
+| `Lecturer` | `lecturer.py` | Assignment creation and lifecycle management |
+| `Course` | `course.py` | Owns assignments, tracks enrollments |
+| `Assignment` | `assignment.py` | DRAFT → PUBLISHED → CLOSED lifecycle, triggers notifications |
+| `Submission` | `submission.py` | Late detection, grade association, notification trigger |
+| `Grade` | `grade.py` | Score storage, percentage computation |
+| `Notification` | `notification.py` | Typed alerts (DEADLINE, SUBMISSION, GRADE) |
+| `Enrollment` | `enrollment.py` | Resolves Student ↔ Course many-to-many |
+
+### 🧩 Creational Patterns (`/creational_patterns`)
+
+| Pattern | Class | Justification |
+|---------|-------|---------------|
+| Simple Factory | `UserFactory` | Registration forms send a role string — one factory handles both `Student` and `Lecturer` creation without callers needing to import either subclass directly |
+| Factory Method | `NotificationCreator` + 3 subclasses | Each trigger type builds a differently-worded notification — subclasses own their construction logic independently, following the Open/Closed Principle |
+| Abstract Factory | `StudentDashboardFactory` / `LecturerDashboardFactory` | Students and lecturers see incompatible views of the same data — the factory guarantees compatible component families per role |
+| Builder | `ConcreteAssignmentBuilder` + `AssignmentDirector` | Assignments have 9+ configurable fields — the builder prevents invalid half-built objects; the Director pre-wires quiz, essay, and project templates |
+| Prototype | `AssignmentTemplateRegistry` | Recurring assignments (weekly labs) are cloned from a registered template — mutations on clones never affect the stored original |
+| Singleton | `NotificationService` | One global dispatcher prevents duplicate alerts — double-checked locking ensures thread safety under concurrent requests |
+
+### 🧪 Running Tests
+
+```bash
+# Run all tests with verbose output
+pytest tests/ -v
+
+# Run with coverage report
+pytest tests/ -v --cov=src --cov=creational_patterns --cov-report=term-missing
+```
+
+**Results: 121 tests passed | 77% coverage**
+
+---
+
+### 🏗️ Domain & Class Modelling (Assignment 9)
 
 * [Domain Model](./docs/DOMAIN_MODEL.md) — Core entities, typed attributes, relationships, and business rules
 * [Class Diagram](./docs/CLASS_DIAGRAM.md) — Full UML class diagram with access modifiers, method signatures, and relationship types
