@@ -48,8 +48,26 @@ This file follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) conve
 
 - Removed `sys.path.insert` hacks from all pattern files — imports now resolve correctly when run as a package from the repo root
 - `creational_patterns/__init__.py` — Removed eager imports that caused `ImportError` during pytest collection. Patterns are now imported directly from their modules
-- `src/lecturer.py` — Added `from __future__ import annotations` and `TYPE_CHECKING` guard to resolve Pylance `"Assignment" is not defined` forward-reference warning
+- `src/lecturer.py` — Added `from __future__ import annotations` and `TYPE_CHECKING` guard to resolve Pylance `"Assignment" is not defined` forward-reference warning (tracked in [#15](../../issues/15))
 - `src/student.py` — Same `TYPE_CHECKING` fix applied for `Enrollment`, `Submission`, `Assignment`, `Notification` forward references
+
+### GitHub Issues Raised
+
+| Issue | Type | Title | Status |
+|-------|------|-------|--------|
+| [#15](../../issues/15) | 🐛 Bug | `lecturer.py` Pylance forward reference warning on `Assignment` return type | ✅ Closed — fixed via `TYPE_CHECKING` guard |
+| [#16](../../issues/16) | 🐛 Bug | `sys.path.insert` in pattern files breaks pytest collection | ✅ Closed — fixed via `pytest.ini` and removed path hacks |
+| [#17](../../issues/17) | ✨ Enhancement | Increase test coverage from 77% to 90%+ | 🔄 Open — `src/lecturer.py` at 64%, `src/enrollment.py` at 74% |
+
+### Kanban Board Updates
+
+- US-001 (User Registration) → **Done**
+- US-002 (User Login) → **Done**
+- US-003 (Create Assignment) → **Done**
+- US-004 (View Assignments) → **Done**
+- US-007 (Track Deadlines) → **Done**
+- US-009 (Receive Notifications) → **In Progress** (unblocked — `NotificationService` implemented)
+- US-010 (Manage Users) → **Done**
 
 ### Test Results
 
