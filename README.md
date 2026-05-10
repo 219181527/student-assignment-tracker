@@ -1,16 +1,18 @@
 # Student Assignment Tracker
 
-## 📌 Project Overview
+A backend system for managing academic coursework — built in Python, designed around clean architecture principles, and structured for extensibility.
 
-The **Student Assignment Tracker** is a software system designed to solve a common problem in higher education: students losing track of assignment deadlines across multiple courses, and lecturers lacking a structured platform for managing and distributing coursework.
+---
+
+## 📌 Overview
+
+The **Student Assignment Tracker** solves a common problem in higher education: students losing track of deadlines across multiple courses, and lecturers lacking a structured platform for distributing and managing coursework.
 
 The system provides:
-- A centralised dashboard for students to view, filter, and monitor all assignment deadlines across enrolled courses
-- A management interface for lecturers to create, publish, update, and close assignments
+- A centralised interface for students to view, filter, and monitor assignment deadlines across all enrolled courses
+- A management layer for lecturers to create, publish, update, and close assignments
 - Automated notifications triggered by deadlines, submissions, and grade releases
 - A structured submission and grading pipeline with full status tracking
-
-This project demonstrates a complete **Software Engineering lifecycle**, from requirements engineering and Agile planning through UML behavioural and structural modelling.
 
 ---
 
@@ -18,11 +20,11 @@ This project demonstrates a complete **Software Engineering lifecycle**, from re
 
 **Education Technology (EdTech)**
 
-The system addresses the gap between institutional learning management systems (which are often overengineered) and informal tools like WhatsApp groups or paper planners (which offer no structure). The Student Assignment Tracker occupies the middle ground: lightweight, role-based, and deadline-focused.
+The system occupies the middle ground between overengineered institutional LMS platforms and informal tools like WhatsApp groups — lightweight, role-based, and deadline-focused.
 
 ---
 
-## 🎯 Project Goals
+## 🎯 Goals
 
 | Goal | Description |
 |------|-------------|
@@ -34,65 +36,24 @@ The system addresses the gap between institutional learning management systems (
 
 ---
 
-## ⚙️ Agile Project Management
-
-This project applies **Agile (Scrum) principles** using GitHub:
-
-* 📌 User Stories implemented as GitHub Issues
-* 🏷️ Labels used for prioritisation and categorisation (Must-Have, Should-Have, Could-Have)
-* 📊 Kanban Board used to track workflow and progress
-* 🎯 Milestones used to define sprint goals
-* 📅 Sprint Planning documented for development cycles
-
----
-
-## 📊 Kanban Board
-
-The project uses a **GitHub Kanban Board** to manage development tasks and visualise workflow.
-
-### 🔧 Customisations
-
-Two additional columns were added beyond the default GitHub template:
-
-* **Testing** — Ensures features are verified before being marked complete, supporting quality assurance
-* **Blocked** — Highlights tasks that cannot proceed due to dependencies or unresolved decisions, making bottlenecks visible early
-
-### 📸 Board Overview
-
-![Kanban Board](screenshots/kanban_board.png)
-
----
-
-## 🛠️ Tools and Technologies
+## 🛠️ Tech Stack
 
 | Tool | Purpose |
 |------|---------|
-| Python 3.14 | Primary implementation language for all source classes and design patterns |
-| pytest 9.x | Unit testing framework — 121 tests across 6 test modules |
-| pytest-cov | Test coverage reporting — 77% coverage across `src/` and `creational_patterns/` |
-| Markdown | All documentation and deliverables |
-| Mermaid.js | UML diagrams (class, state, activity) embedded in Markdown |
-| GitHub Issues | User story and task tracking |
-| GitHub Projects (Kanban) | Workflow and sprint management |
-| GitHub Milestones | Sprint goal definition |
+| Python 3.14 | Primary implementation language |
+| pytest 9.x | Unit testing — 153+ tests across 8 modules |
+| pytest-cov | Coverage reporting across all layers |
+| Mermaid.js | UML diagrams embedded in Markdown |
+| GitHub Projects | Kanban board, sprint planning, issue tracking |
 
 ---
 
-## 📁 Repository Structure
+## 📁 Project Structure
 
 ```text
-student-assignment-tracker
+student-assignment-tracker/
 │
-├── .gitignore
-├── LICENSE
-├── README.md
-├── CHANGELOG.md
-├── SPECIFICATION.md
-├── ARCHITECTURE.md
-├── pytest.ini
-│
-├── src/                               ← Class implementations (Assignment 10)
-│   ├── __init__.py
+├── src/                          ← Domain model classes
 │   ├── user.py
 │   ├── student.py
 │   ├── lecturer.py
@@ -103,8 +64,7 @@ student-assignment-tracker
 │   ├── notification.py
 │   └── enrollment.py
 │
-├── creational_patterns/               ← All 6 creational design patterns (Assignment 10)
-│   ├── __init__.py
+├── creational_patterns/          ← Object creation design patterns
 │   ├── simple_factory.py
 │   ├── factory_method.py
 │   ├── abstract_factory.py
@@ -112,176 +72,224 @@ student-assignment-tracker
 │   ├── prototype.py
 │   └── singleton.py
 │
-├── tests/                             ← Unit tests with coverage (Assignment 10)
-│   ├── __init__.py
+├── repositories/                 ← Persistence layer
+│   ├── base.py                   ← Generic Repository[T, ID] interface
+│   ├── interfaces.py             ← Entity-specific interfaces
+│   ├── inmemory/                 ← HashMap-backed implementations
+│   ├── filesystem/               ← JSON file-backed implementations
+│   ├── database/                 ← SQL/NoSQL stubs (pluggable)
+│   └── factory/                  ← RepositoryFactory abstraction
+│
+├── tests/                        ← Full test suite
 │   ├── conftest.py
 │   ├── test_simple_factory.py
 │   ├── test_factory_method.py
 │   ├── test_abstract_factory.py
 │   ├── test_builder.py
 │   ├── test_prototype.py
-│   └── test_singleton.py
+│   ├── test_singleton.py
+│   ├── test_repository_factory.py
+│   └── test_storage_backends.py
 │
-├── docs/
-│   ├── STAKEHOLDERS.md
+├── docs/                         ← System documentation
 │   ├── REQUIREMENTS.md
 │   ├── USE_CASES.md
-│   ├── USE_CASE_SPECIFICATIONS.md
-│   ├── TEST_CASES.md
-│   ├── USER_STORIES.md
-│   ├── PRODUCT_BACKLOG.md
-│   ├── SPRINT_PLANNING.md
-│   ├── TEMPLATE_ANALYSIS.md
-│   ├── KANBAN_EXPLANATION.md
-│   ├── KANBAN_REFLECTION.md
-│   ├── REFLECTION.md
-│   ├── USE_CASE_TEST_REFLECTION.md
-│   ├── MODEL_INTEGRATION.md
 │   ├── DOMAIN_MODEL.md
 │   ├── CLASS_DIAGRAM.md
-│   ├── CLASS_MODEL_REFLECTION.md
 │   ├── state_diagrams/
 │   └── activity_diagrams/
 │
-└── screenshots/
-    └── kanban_board.png
+├── pytest.ini
+├── CHANGELOG.md
+└── README.md
 ```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.8+
+- pip
+
+### Installation
+
+```bash
+git clone https://github.com/219181527/student-assignment-tracker.git
+cd student-assignment-tracker
+pip install pytest pytest-cov
+```
+
+### Run Tests
+
+```bash
+# Full test suite
+pytest tests/ -v
+
+# With coverage report
+pytest tests/ -v --cov=src --cov=creational_patterns --cov=repositories --cov-report=term-missing
+```
+
+### Verify CRUD Operations
+
+```bash
+python -c "
+from repositories.factory import RepositoryFactory
+from src.student import Student
+
+factory = RepositoryFactory('MEMORY')
+repo = factory.get_student_repository()
+
+s = Student('s1', 'Alice', 'alice@uni.ac.za', 'pass', 'STU001', 2)
+s.register()
+repo.save(s)
+
+print(repo.find_by_id('s1'))        # Student object
+print(repo.exists('s1'))            # True
+print(repo.count())                 # 1
+
+s.update_profile(name='Alice Updated')
+repo.save(s)
+print(repo.find_by_id('s1').name)   # Alice Updated
+
+repo.delete('s1')
+print(repo.find_by_id('s1'))        # None
+"
+```
+
+---
+
+## 🏗️ Architecture
+
+### Domain Layer (`/src`)
+
+Nine domain classes with private attributes, typed method signatures, and enforced business rules:
+
+| Class | Responsibility |
+|-------|---------------|
+| `User` | Base class — authentication, registration, profile management |
+| `Student` | Deadline tracking, assignment submission, enrollment access |
+| `Lecturer` | Assignment lifecycle management with ownership enforcement |
+| `Course` | Owns assignments (composition), tracks enrollments (aggregation) |
+| `Assignment` | `DRAFT → PUBLISHED → CLOSED` lifecycle, triggers notifications on publish |
+| `Submission` | Late detection at construction time, triggers grade notifications |
+| `Grade` | Score storage, percentage computation against total marks |
+| `Notification` | Typed alerts (`DEADLINE`, `SUBMISSION`, `GRADE`) with traceable source |
+| `Enrollment` | Resolves the `Student ↔ Course` many-to-many relationship |
+
+---
+
+### Creational Patterns (`/creational_patterns`)
+
+Six design patterns applied to real domain problems:
+
+| Pattern | Applied To | Why |
+|---------|-----------|-----|
+| Simple Factory | `UserFactory` | Registration sends a role string — one factory creates `Student` or `Lecturer` without exposing subclass imports |
+| Factory Method | `NotificationCreator` | Each trigger type builds differently-worded notifications — subclasses own their construction logic independently |
+| Abstract Factory | `DashboardFactory` | Students and lecturers see incompatible views of the same data — factory guarantees compatible component families per role |
+| Builder | `AssignmentBuilder` + `AssignmentDirector` | Assignments have 9+ configurable fields — builder prevents half-built objects; Director provides named templates (quiz, essay, project) |
+| Prototype | `AssignmentTemplateRegistry` | Recurring assignments cloned from registered templates — mutations on clones never affect the stored original |
+| Singleton | `NotificationService` | One global dispatcher prevents duplicate alerts — double-checked locking for thread safety |
+
+---
+
+### Persistence Layer (`/repositories`)
+
+A repository pattern implementation with swappable storage backends:
+
+```
+Repository[T, ID]              ← Generic interface (6 CRUD operations)
+    └── StudentRepository      ← Entity interface (+ domain-specific finders)
+            ├── InMemoryStudentRepository     ← dict / HashMap
+            ├── FileSystemStudentRepository   ← JSON files
+            └── DatabaseStudentRepository     ← SQL/NoSQL (pluggable)
+```
+
+**Generic interfaces** — `save`, `find_by_id`, `find_all`, `delete`, `exists`, `count` defined once in `base.py`, inherited by all nine entity repositories. Domain-specific finders (`find_by_course`, `find_overdue`, `find_by_student_and_assignment`) declared per entity interface.
+
+**In-memory** — Python `dict` backing store. O(1) CRUD, zero setup. Default for testing and local development.
+
+**Filesystem** — JSON file backing store. Data persists across restarts. Fully implemented for `Student`, `Course`, `Lecturer`, and `Notification`.
+
+**Database** — Pluggable stub. All methods raise `NotImplementedError` with implementation guidance. To activate: install SQLAlchemy or PyMongo, implement the stub classes, switch `RepositoryFactory("DATABASE")`. Zero changes to domain classes or tests required.
+
+#### Storage Abstraction — `RepositoryFactory`
+
+Switching backends is a single line:
+
+```python
+factory = RepositoryFactory("MEMORY")      # default — no setup required
+factory = RepositoryFactory("FILESYSTEM")  # persistent JSON storage
+factory = RepositoryFactory("DATABASE")    # production database
+```
+
+The Factory Pattern was chosen over Dependency Injection because the storage backend is an application-wide decision made at startup — not a per-service concern. All repositories share the same backend, making a factory simpler and equally flexible.
+
+| Consideration | Factory ✅ | Dependency Injection |
+|---------------|-----------|---------------------|
+| Backend decision scope | Application-wide | Per-component |
+| Configuration | Single string | DI container required |
+| Complexity | Low | Higher |
+| Best for | One backend for all services | Different backends per service |
+
+---
+
+## 🧪 Testing
+
+```
+153+ tests | 77% coverage
+```
+
+| Module | Tests | What's covered |
+|--------|-------|---------------|
+| `test_simple_factory.py` | 13 | Role creation, case-insensitivity, password hashing, invalid roles |
+| `test_factory_method.py` | 16 | All three notification creators, message content, trigger types |
+| `test_abstract_factory.py` | 19 | Component families, rendered output, role compatibility |
+| `test_builder.py` | 22 | Attribute setting, chaining, edge cases, Director templates |
+| `test_prototype.py` | 15 | Clone independence, registry isolation, dict output shape |
+| `test_singleton.py` | 16 | Identity, shared state, dispatch lifecycle, thread safety (20 threads) |
+| `test_repository_factory.py` | 32 | Backend routing, instance caching, isolation between factories |
+| `test_storage_backends.py` | 20+ | FileSystem CRUD, JSON persistence, database stub errors |
+
+---
+
+## 📊 Project Management
+
+Development tracked using GitHub's native tooling:
+
+- **Issues** — features, bugs, and enhancements with labels (`feature`, `bug`, `enhancement`)
+- **Kanban Board** — custom columns: `Backlog`, `Ready`, `In Progress`, `Testing`, `Blocked`, `Done`
+- **Milestones** — sprint goals with due dates
+- **CHANGELOG.md** — all notable changes documented per release
+
+![Kanban Board](screenshots/kanban_board.png)
 
 ---
 
 ## 📚 Documentation
 
-### 📄 Core Documents
-
-* [System Specification](./SPECIFICATION.md)
-* [System Architecture](./ARCHITECTURE.md)
-
----
-
-### 👥 Requirements Engineering
-
-* [Stakeholder Analysis](./docs/STAKEHOLDERS.md)
-* [System Requirements](./docs/REQUIREMENTS.md)
-
----
-
-### 📊 Analysis & Design
-
-* [Use Case Diagram & Description](./docs/USE_CASES.md)
-* [Use Case Specifications](./docs/USE_CASE_SPECIFICATIONS.md)
+| Document | Description |
+|----------|-------------|
+| [System Specification](./SPECIFICATION.md) | Functional and non-functional requirements |
+| [System Architecture](./ARCHITECTURE.md) | High-level architecture decisions |
+| [Stakeholder Analysis](./docs/STAKEHOLDERS.md) | Roles, interests, and influence |
+| [Requirements](./docs/REQUIREMENTS.md) | FR1–FR9 with acceptance criteria |
+| [Use Cases](./docs/USE_CASES.md) | UC1–UC9 with specifications |
+| [Domain Model](./docs/DOMAIN_MODEL.md) | Entities, relationships, business rules |
+| [Class Diagram](./docs/CLASS_DIAGRAM.md) | Full UML with method signatures |
+| [Repository Class Diagram](./repositories/REPOSITORY_CLASS_DIAGRAM.md) | Repository layer UML |
+| [State Diagrams](./docs/state_diagrams/) | Lifecycle diagrams for all 8 entities |
+| [Activity Diagrams](./docs/activity_diagrams/) | Flow diagrams for all 8 use cases |
 
 ---
 
-### 🧪 Testing
+## 🐛 Known Issues
 
-* [Test Cases](./docs/TEST_CASES.md)
-
----
-
-### 🚀 Agile Planning
-
-* [User Stories](./docs/USER_STORIES.md)
-* [Product Backlog](./docs/PRODUCT_BACKLOG.md)
-* [Sprint Planning](./docs/SPRINT_PLANNING.md)
-
----
-
-### 📊 Project Management
-
-* [Template Analysis and Selection](./docs/TEMPLATE_ANALYSIS.md)
-* [Kanban Board Explanation](./docs/KANBAN_EXPLANATION.md)
-* [Kanban Reflection](./docs/KANBAN_REFLECTION.md)
-
----
-
-## 🧩 System Modelling
-
-### 🔄 Object State Diagrams
-
-| Diagram | Description |
-|---------|-------------|
-| [Assignment State](./docs/state_diagrams/assignment_state.md) | DRAFT → PUBLISHED → CLOSED lifecycle |
-| [User Account State](./docs/state_diagrams/user_account_state.md) | Registration, activation, suspension |
-| [Submission State](./docs/state_diagrams/submission_state.md) | SUBMITTED → LATE → GRADED transitions |
-| [Notification State](./docs/state_diagrams/notification_state.md) | UNREAD → READ delivery lifecycle |
-| [Deadline Tracker State](./docs/state_diagrams/deadline_tracker_state.md) | Deadline proximity states |
-| [Course State](./docs/state_diagrams/course_state.md) | Active/inactive course lifecycle |
-| [Enrollment State](./docs/state_diagrams/enrollment_state.md) | ACTIVE → DROPPED → COMPLETED |
-| [Grade State](./docs/state_diagrams/grade_state.md) | Grading and release lifecycle |
-
----
-
-### 🔄 Activity Diagrams
-
-| Diagram | Covers |
-|---------|--------|
-| [User Registration](./docs/activity_diagrams/user_registration.md) | FR1 |
-| [User Login](./docs/activity_diagrams/user_login.md) | FR2 |
-| [Create Assignment](./docs/activity_diagrams/create_assignment.md) | FR3 |
-| [View Assignments](./docs/activity_diagrams/view_assignments.md) | FR4 |
-| [Update Assignment](./docs/activity_diagrams/update_assignment.md) | FR5 |
-| [Track Deadlines](./docs/activity_diagrams/track_deadlines.md) | FR7 |
-| [Submit Assignment](./docs/activity_diagrams/submit_assignment.md) | FR8 |
-| [Receive Notifications](./docs/activity_diagrams/receive_notifications.md) | FR9 |
-
----
-
-## 💻 Implementation (Assignment 10)
-
-### 🐍 Language Choice — Python 3.14
-
-Python was chosen for its clean, readable syntax that maps directly to UML class diagrams, making the implementation-to-design traceability easy to verify. Python's `abc` module provides native abstract base class support for the Factory Method and Abstract Factory patterns, and `threading.Lock` enables production-grade thread safety in the Singleton.
-
-### 📦 Source Classes (`/src`)
-
-| Class | File | Key Responsibility |
-|-------|------|--------------------|
-| `User` | `user.py` | Base class — authentication, registration, profile |
-| `Student` | `student.py` | Deadline tracking, assignment submission, enrollment access |
-| `Lecturer` | `lecturer.py` | Assignment creation and lifecycle management |
-| `Course` | `course.py` | Owns assignments, tracks enrollments |
-| `Assignment` | `assignment.py` | DRAFT → PUBLISHED → CLOSED lifecycle, triggers notifications |
-| `Submission` | `submission.py` | Late detection, grade association, notification trigger |
-| `Grade` | `grade.py` | Score storage, percentage computation |
-| `Notification` | `notification.py` | Typed alerts (DEADLINE, SUBMISSION, GRADE) |
-| `Enrollment` | `enrollment.py` | Resolves Student ↔ Course many-to-many |
-
-### 🧩 Creational Patterns (`/creational_patterns`)
-
-| Pattern | Class | Justification |
-|---------|-------|---------------|
-| Simple Factory | `UserFactory` | Registration forms send a role string — one factory handles both `Student` and `Lecturer` creation without callers needing to import either subclass directly |
-| Factory Method | `NotificationCreator` + 3 subclasses | Each trigger type builds a differently-worded notification — subclasses own their construction logic independently, following the Open/Closed Principle |
-| Abstract Factory | `StudentDashboardFactory` / `LecturerDashboardFactory` | Students and lecturers see incompatible views of the same data — the factory guarantees compatible component families per role |
-| Builder | `ConcreteAssignmentBuilder` + `AssignmentDirector` | Assignments have 9+ configurable fields — the builder prevents invalid half-built objects; the Director pre-wires quiz, essay, and project templates |
-| Prototype | `AssignmentTemplateRegistry` | Recurring assignments (weekly labs) are cloned from a registered template — mutations on clones never affect the stored original |
-| Singleton | `NotificationService` | One global dispatcher prevents duplicate alerts — double-checked locking ensures thread safety under concurrent requests |
-
-### 🧪 Running Tests
-
-```bash
-# Run all tests with verbose output
-pytest tests/ -v
-
-# Run with coverage report
-pytest tests/ -v --cov=src --cov=creational_patterns --cov-report=term-missing
-```
-
-**Results: 121 tests passed | 77% coverage**
-
----
-
-### 🏗️ Domain & Class Modelling (Assignment 9)
-
-* [Domain Model](./docs/DOMAIN_MODEL.md) — Core entities, typed attributes, relationships, and business rules
-* [Class Diagram](./docs/CLASS_DIAGRAM.md) — Full UML class diagram with access modifiers, method signatures, and relationship types
-* [Class Model Reflection](./docs/CLASS_MODEL_REFLECTION.md) — Critical analysis of design decisions and trade-offs
-
----
-
-### 📌 Model Integration
-
-* [Model Integration & Justification](./docs/MODEL_INTEGRATION.md)
+| Issue | Description |
+|-------|-------------|
+| [#17](../../issues/17) | Increase test coverage on `lecturer.py` (64%) and `enrollment.py` (74%) to 90%+ |
 
 ---
 
@@ -292,4 +300,3 @@ Student Number: **219181527**
 GitHub: [github.com/219181527](https://github.com/219181527)
 
 ---
-
