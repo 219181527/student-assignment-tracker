@@ -41,8 +41,12 @@ The system occupies the middle ground between overengineered institutional LMS p
 | Tool | Purpose |
 |------|---------|
 | Python 3.14 | Primary implementation language |
-| pytest 9.x | Unit testing — 153+ tests across 8 modules |
-| pytest-cov | Coverage reporting across all layers |
+| FastAPI | REST API framework with auto OpenAPI docs |
+| Uvicorn | ASGI server |
+| Pydantic v2 | Request/response validation and serialisation |
+| pytest 9.x | Unit and integration testing — 265 tests |
+| pytest-cov | Coverage reporting |
+| httpx | HTTP client for API integration tests |
 | Mermaid.js | UML diagrams embedded in Markdown |
 | GitHub Projects | Kanban board, sprint planning, issue tracking |
 
@@ -54,54 +58,33 @@ The system occupies the middle ground between overengineered institutional LMS p
 student-assignment-tracker/
 │
 ├── src/                          ← Domain model classes
-│   ├── user.py
-│   ├── student.py
-│   ├── lecturer.py
-│   ├── course.py
-│   ├── assignment.py
-│   ├── submission.py
-│   ├── grade.py
-│   ├── notification.py
-│   └── enrollment.py
-│
 ├── creational_patterns/          ← Object creation design patterns
-│   ├── simple_factory.py
-│   ├── factory_method.py
-│   ├── abstract_factory.py
-│   ├── builder.py
-│   ├── prototype.py
-│   └── singleton.py
-│
 ├── repositories/                 ← Persistence layer
-│   ├── base.py                   ← Generic Repository[T, ID] interface
-│   ├── interfaces.py             ← Entity-specific interfaces
-│   ├── inmemory/                 ← HashMap-backed implementations
-│   ├── filesystem/               ← JSON file-backed implementations
-│   ├── database/                 ← SQL/NoSQL stubs (pluggable)
-│   └── factory/                  ← RepositoryFactory abstraction
-│
-├── tests/                        ← Full test suite
-│   ├── conftest.py
-│   ├── test_simple_factory.py
-│   ├── test_factory_method.py
-│   ├── test_abstract_factory.py
-│   ├── test_builder.py
-│   ├── test_prototype.py
-│   ├── test_singleton.py
-│   ├── test_repository_factory.py
-│   └── test_storage_backends.py
-│
-├── docs/                         ← System documentation
-│   ├── REQUIREMENTS.md
-│   ├── USE_CASES.md
-│   ├── DOMAIN_MODEL.md
-│   ├── CLASS_DIAGRAM.md
-│   ├── state_diagrams/
-│   └── activity_diagrams/
-│
-├── pytest.ini
-├── CHANGELOG.md
-└── README.md
+│   ├── inmemory/
+│   ├── filesystem/
+│   ├── database/
+│   └── factory/
+├── services/                     ← Business logic layer
+│   ├── base.py
+│   ├── user_service.py
+│   ├── assignment_service.py
+│   └── submission_service.py
+├── api/                          ← REST API layer (FastAPI)
+│   ├── main.py
+│   ├── schemas.py
+│   ├── dependencies.py
+│   └── routes/
+│       ├── users.py
+│       ├── assignments.py
+│       └── submissions.py
+├── tests/                        ← Full test suite (265 tests)
+│   ├── services/
+│   └── api/
+├── docs/                         ← Documentation
+│   └── api/
+│       ├── openapi.yaml
+│       └── API_DOCS.md
+└── pytest.ini
 ```
 
 ---
@@ -118,8 +101,21 @@ student-assignment-tracker/
 ```bash
 git clone https://github.com/219181527/student-assignment-tracker.git
 cd student-assignment-tracker
-pip install pytest pytest-cov
+pip install pytest pytest-cov fastapi uvicorn httpx
 ```
+
+### Run the API
+
+```bash
+uvicorn api.main:app --reload
+```
+
+| URL | Description |
+|-----|-------------|
+| `http://localhost:8000/docs` | Swagger UI — interactive API explorer |
+| `http://localhost:8000/redoc` | ReDoc — clean reference documentation |
+| `http://localhost:8000/health` | Health check |
+| `http://localhost:8000/openapi.json` | Raw OpenAPI spec |
 
 ### Run Tests
 
@@ -128,7 +124,7 @@ pip install pytest pytest-cov
 pytest tests/ -v
 
 # With coverage report
-pytest tests/ -v --cov=src --cov=creational_patterns --cov=repositories --cov-report=term-missing
+pytest tests/ -v --cov=src --cov=creational_patterns --cov=repositories --cov=services --cov=api --cov-report=term-missing
 ```
 
 ### Verify CRUD Operations
@@ -195,6 +191,43 @@ Six design patterns applied to real domain problems:
 
 ---
 
+### Service Layer (`/services`)
+
+Business logic encapsulated in three service classes, each injected with a `RepositoryFactory`:
+
+| Service | Responsibility |
+|---------|---------------|
+| `UserService` | Registration (duplicate prevention), login, profile updates |
+| `AssignmentService` | Full `DRAFT → PUBLISHED → CLOSED` lifecycle with ownership enforcement |
+| `SubmissionService` | Enrollment validation, one-submission rule, score range checks, grading |
+
+All services share a typed exception hierarchy that maps directly to HTTP status codes:
+
+| Exception | HTTP | Meaning |
+|-----------|------|---------|
+| `NotFoundError` | 404 | Entity does not exist |
+| `ConflictError` | 409 | Business rule violation |
+| `PermissionError` | 403 | Unauthorised action |
+| `ValidationError` | 422 | Invalid input data |
+
+---
+
+### REST API (`/api`)
+
+Built with **FastAPI**. Auto-documented via Swagger UI at `/docs`.
+
+**25 endpoints across 3 routers:**
+
+| Router | Prefix | Endpoints |
+|--------|--------|-----------|
+| Users | `/api/users` | Register, login, get, list, update students and lecturers |
+| Assignments | `/api/assignments` | Create, publish, close, delete, update, list, overdue |
+| Submissions | `/api/submissions` | Submit, grade, get, list by assignment/student |
+
+See [`docs/api/API_DOCS.md`](./docs/api/API_DOCS.md) for the full endpoint reference.
+
+---
+
 ### Persistence Layer (`/repositories`)
 
 A repository pattern implementation with swappable storage backends:
@@ -239,19 +272,23 @@ The Factory Pattern was chosen over Dependency Injection because the storage bac
 ## 🧪 Testing
 
 ```
-153+ tests | 77% coverage
+265 tests | 74%+ coverage
 ```
 
 | Module | Tests | What's covered |
 |--------|-------|---------------|
-| `test_simple_factory.py` | 13 | Role creation, case-insensitivity, password hashing, invalid roles |
-| `test_factory_method.py` | 16 | All three notification creators, message content, trigger types |
-| `test_abstract_factory.py` | 19 | Component families, rendered output, role compatibility |
-| `test_builder.py` | 22 | Attribute setting, chaining, edge cases, Director templates |
-| `test_prototype.py` | 15 | Clone independence, registry isolation, dict output shape |
-| `test_singleton.py` | 16 | Identity, shared state, dispatch lifecycle, thread safety (20 threads) |
-| `test_repository_factory.py` | 32 | Backend routing, instance caching, isolation between factories |
-| `test_storage_backends.py` | 20+ | FileSystem CRUD, JSON persistence, database stub errors |
+| `test_simple_factory.py` | 13 | Role creation, case-insensitivity, password hashing |
+| `test_factory_method.py` | 16 | All three notification creators |
+| `test_abstract_factory.py` | 19 | Component families, role compatibility |
+| `test_builder.py` | 22 | Attribute setting, chaining, Director templates |
+| `test_prototype.py` | 15 | Clone independence, registry isolation |
+| `test_singleton.py` | 16 | Identity, thread safety (20 threads) |
+| `test_repository_factory.py` | 32 | Backend routing, caching, isolation |
+| `test_storage_backends.py` | 39 | FileSystem CRUD, JSON persistence |
+| `tests/services/test_user_service.py` | 21 | Registration, login, profile management |
+| `tests/services/test_assignment_service.py` | 22 | Assignment lifecycle, ownership rules |
+| `tests/services/test_submission_service.py` | 30 | Submission, grading, score validation |
+| `tests/api/test_api.py` | 30 | End-to-end API integration tests |
 
 ---
 
@@ -296,7 +333,4 @@ Development tracked using GitHub's native tooling:
 ## 👤 Author
 
 **Mongameli Shasha**
-Student Number: **219181527**
 GitHub: [github.com/219181527](https://github.com/219181527)
-
----
