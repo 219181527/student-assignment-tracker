@@ -14,6 +14,14 @@ Documentation is available in three formats:
 
 ---
 
+## Swagger UI
+
+![Swagger UI](./swagger_ui.png)
+
+![Swagger UI — Endpoint Detail](./swagger_ui_detail.png)
+
+---
+
 ## Running the API
 
 ```bash
