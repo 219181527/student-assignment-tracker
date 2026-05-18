@@ -6,6 +6,52 @@ This file follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) conve
 
 ---
 
+## [v1.0.0] — 2026-05-18
+
+### Added — Service Layer (`/services`)
+
+- `services/base.py` — `BaseService` with shared validators and a typed exception hierarchy mapping to HTTP status codes: `NotFoundError` (404), `ValidationError` (422), `ConflictError` (409), `PermissionError` (403)
+- `services/user_service.py` — `UserService` handling student/lecturer registration (duplicate email and student number prevention), login (credential + active account verification), and profile updates
+- `services/assignment_service.py` — `AssignmentService` enforcing the full `DRAFT → PUBLISHED → CLOSED` lifecycle with ownership checks, inactive course prevention, and past due date validation
+- `services/submission_service.py` — `SubmissionService` enforcing enrollment checks, one-submission-per-student rule, score range validation, re-grade prevention, and lecturer ownership on grading
+- `tests/services/conftest.py` — Shared service test fixtures with isolated in-memory factory per test
+- `tests/services/test_user_service.py` — 21 tests covering registration, login, profile management
+- `tests/services/test_assignment_service.py` — 22 tests covering full assignment lifecycle
+- `tests/services/test_submission_service.py` — 30 tests covering submission, grading, and retrieval
+
+### Added — REST API (`/api`)
+
+- `api/main.py` — FastAPI application with global exception handlers, OpenAPI metadata, and custom ReDoc route
+- `api/schemas.py` — Pydantic v2 request/response schemas with `ConfigDict` and `json_schema_extra` for all 14 models
+- `api/dependencies.py` — Cached `RepositoryFactory` with `lru_cache` and `dependency_overrides` support for test isolation
+- `api/routes/users.py` — 9 endpoints: student/lecturer registration, login, get, list, update
+- `api/routes/assignments.py` — 10 endpoints: create, get, list, update, delete, publish, close, list by course/lecturer, overdue
+- `api/routes/submissions.py` — 6 endpoints: submit, get, list by assignment/student, grade, get grade
+- `tests/api/test_api.py` — 30 integration tests end-to-end through the full stack
+
+### Added — API Documentation (`/docs/api`)
+
+- `docs/api/openapi.yaml` — Complete OpenAPI 3.1 specification (25 endpoints, all request/response schemas, all error responses)
+- `docs/api/API_DOCS.md` — Human-readable endpoint reference with business rules and example workflows
+- `docs/export_openapi.py` — Script to regenerate `openapi.json` and `openapi.yaml` from the live FastAPI app
+
+### Fixed
+
+- `DELETE /api/assignments/{id}` — Moved `lecturer_id` from request body to query parameter; `TestClient.delete()` does not support `json=` in newer httpx versions
+- `api/schemas.py` — Replaced deprecated `Field(example=...)` with `model_config = ConfigDict(json_schema_extra=...)` — clears 34 Pydantic v2 deprecation warnings
+- `api/main.py` — Added custom ReDoc HTML route to fix blank page caused by CDN load issues in default FastAPI setup
+
+### Test Results
+
+```
+265 total tests passing
+  73  service layer tests
+  30  API integration tests
+ 192  repository + pattern tests (carried forward)
+```
+
+---
+
 ## [Assignment 10] — 2026-05-04
 
 ### Added — Class Implementation (`/src`)
