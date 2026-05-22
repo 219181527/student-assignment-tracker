@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write   # Required to create GitHub Releases and upload artifacts
+
 jobs:
 
   # =========================================================================
