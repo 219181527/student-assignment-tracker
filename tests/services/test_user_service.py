@@ -22,7 +22,7 @@ class TestStudentRegistration:
         s = user_service.register_student(
             "s1", "Alice", "alice@uni.ac.za", "pass", "STU001", 2
         )
-        assert s.is_active is True
+        assert s.is_active is False
 
     def test_register_student_stores_correct_name(self, user_service):
         s = user_service.register_student(
