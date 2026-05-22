@@ -6,6 +6,39 @@ This file follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) conve
 
 ---
 
+## [v1.1.0] — 2026-05-20
+
+### Added — CI/CD Pipeline
+
+- `.github/workflows/ci.yml` — GitHub Actions workflow with two jobs:
+  - `Run Tests` — triggers on every push and every PR to `main`. Runs 395 tests across all layers with coverage reporting. Uploads `test-results.xml` and `coverage.xml` as artifacts. Blocks PR merge if any test fails
+  - `Build Release Artifact` — triggers only on merge to `main`. Builds a Python wheel (`.whl`) and creates a versioned GitHub Release (`v1.0.{run_number}`) with release notes and the wheel attached
+- `requirements.txt` — pinned dependency file used by CI for reproducible installs
+- `PROTECTION.md` — documents all branch protection rules on `main` and justifies each rule
+
+### Added — Branch Protection (main)
+
+- Require pull request before merging — no direct pushes to `main`
+- Require 1 approving review
+- Dismiss stale reviews on new push
+- Require status checks to pass (`Run Tests` job must be green)
+- Require branches to be up to date before merging
+- Do not allow bypassing rules (applies to admins)
+
+### Fixed
+
+- `actions/upload-artifact@v3` — deprecated, upgraded to `@v4`
+- `setup-python cache: pip` — removed; caused failure when `requirements.txt` was missing. Added `requirements.txt` to fix
+
+### Test Results (CI)
+
+```
+395 passed in 2.88s
+80% coverage across all layers
+```
+
+---
+
 ## [v1.0.0] — 2026-05-18
 
 ### Added — Service Layer (`/services`)
