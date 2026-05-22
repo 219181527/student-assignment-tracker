@@ -89,7 +89,59 @@ student-assignment-tracker/
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ CI/CD Pipeline
+
+This project uses **GitHub Actions** for automated testing and releases.
+
+### How It Works
+
+```
+Push to any branch
+      ↓
+CI: Run 395 tests (pytest)
+      ↓
+  Tests pass? ──No──→ PR blocked from merging
+      ↓ Yes
+Merge to main approved
+      ↓
+CD: Build Python wheel
+      ↓
+GitHub Release created automatically (v1.0.x)
+```
+
+### Workflow File
+
+[`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
+
+| Job | Trigger | What it does |
+|-----|---------|-------------|
+| `Run Tests` | Every push, every PR | Runs 395 tests, uploads results + coverage as artifacts |
+| `Build Release Artifact` | Merge to `main` only | Builds Python wheel, creates GitHub Release |
+
+### Running Tests Locally
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run full test suite
+pytest tests/ -v
+
+# With coverage report
+pytest tests/ -v --cov=src --cov=creational_patterns --cov=repositories --cov=services --cov=api --cov-report=term-missing
+```
+
+### Branch Protection
+
+The `main` branch is protected:
+- All changes must go through a pull request
+- CI must pass before merging is allowed
+- At least 1 review required
+- See [`PROTECTION.md`](./PROTECTION.md) for full details
+
+---
+
+
 
 ### Prerequisites
 
@@ -330,7 +382,10 @@ Development tracked using GitHub's native tooling:
 
 ---
 
-## 👤 Author
+## 👤 Author 
 
-**Mongameli Shasha**
-GitHub: [github.com/219181527](https://github.com/219181527)
+**Mongameli Shasha** 
+Student Number: **219181527** 
+GitHub: [github.com/219181527](https://github.com/219181527) 
+
+---
