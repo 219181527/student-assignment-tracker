@@ -57,18 +57,43 @@ The system occupies the middle ground between overengineered institutional LMS p
 ```text
 student-assignment-tracker/
 │
+├── .github/
+│   └── workflows/
+│       └── ci.yml                ← GitHub Actions CI/CD pipeline
+│
 ├── src/                          ← Domain model classes
+│   ├── user.py
+│   ├── student.py
+│   ├── lecturer.py
+│   ├── course.py
+│   ├── assignment.py
+│   ├── submission.py
+│   ├── grade.py
+│   ├── notification.py
+│   └── enrollment.py
+│
 ├── creational_patterns/          ← Object creation design patterns
+│   ├── simple_factory.py
+│   ├── factory_method.py
+│   ├── abstract_factory.py
+│   ├── builder.py
+│   ├── prototype.py
+│   └── singleton.py
+│
 ├── repositories/                 ← Persistence layer
+│   ├── base.py
+│   ├── interfaces.py
 │   ├── inmemory/
 │   ├── filesystem/
 │   ├── database/
 │   └── factory/
+│
 ├── services/                     ← Business logic layer
 │   ├── base.py
 │   ├── user_service.py
 │   ├── assignment_service.py
 │   └── submission_service.py
+│
 ├── api/                          ← REST API layer (FastAPI)
 │   ├── main.py
 │   ├── schemas.py
@@ -77,14 +102,50 @@ student-assignment-tracker/
 │       ├── users.py
 │       ├── assignments.py
 │       └── submissions.py
-├── tests/                        ← Full test suite (265 tests)
+│
+├── tests/                        ← Full test suite (395 tests)
+│   ├── conftest.py
+│   ├── test_simple_factory.py
+│   ├── test_factory_method.py
+│   ├── test_abstract_factory.py
+│   ├── test_builder.py
+│   ├── test_prototype.py
+│   ├── test_singleton.py
+│   ├── test_repository_factory.py
+│   ├── test_storage_backends.py
 │   ├── services/
+│   │   ├── test_user_service.py
+│   │   ├── test_assignment_service.py
+│   │   └── test_submission_service.py
 │   └── api/
-├── docs/                         ← Documentation
-│   └── api/
-│       ├── openapi.yaml
-│       └── API_DOCS.md
-└── pytest.ini
+│       └── test_api.py
+│
+├── docs/                         ← System documentation
+│   ├── api/
+│   │   ├── openapi.yaml
+│   │   ├── API_DOCS.md
+│   │   ├── swagger_ui.png
+│   │   └── swagger_ui_detail.png
+│   ├── export_openapi.py
+│   ├── DOMAIN_MODEL.md
+│   ├── CLASS_DIAGRAM.md
+│   ├── state_diagrams/
+│   └── activity_diagrams/
+│
+├── screenshots/
+│   ├── kanban_board.png
+│   ├── branch_protection.png
+│   ├── ci_passing.png
+│   ├── cd_passing.png
+│   ├── artifact.png
+│   ├── release.png
+│   └── pr_blocked.png
+│
+├── requirements.txt              ← Pinned dependencies for CI
+├── pytest.ini
+├── PROTECTION.md                 ← Branch protection documentation
+├── CHANGELOG.md
+└── README.md
 ```
 
 ---
