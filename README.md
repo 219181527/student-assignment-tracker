@@ -150,7 +150,39 @@ student-assignment-tracker/
 
 ---
 
-## ⚙️ CI/CD Pipeline
+## 🤝 Contributing
+
+Contributions are welcome! This project is open to all skill levels.
+
+### Quick Start for Contributors
+
+1. **Fork** this repository
+2. **Pick an issue** labelled `good-first-issue` from the [Issues tab](https://github.com/219181527/student-assignment-tracker/issues)
+3. **Clone** your fork and create a feature branch from `dev`
+4. **Write code and tests** — all PRs must maintain 80%+ coverage
+5. **Submit a PR** with a clear description linking the issue
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for full setup instructions, coding standards, and the PR workflow.
+
+### Features Open for Contribution
+
+| Feature | Complexity | Label | Description |
+|---------|-----------|-------|-------------|
+| CourseService + endpoints | Low | `good-first-issue` | Expose course CRUD via REST API |
+| Enrollment API endpoint | Low | `good-first-issue` | `POST /api/enrollments` for student enrollment |
+| Increase test coverage | Low | `good-first-issue` | `lecturer.py` at 64%, `enrollment.py` at 74% |
+| Pagination on list endpoints | Medium | `good-first-issue` | Add `?page=` and `?limit=` to all GET list routes |
+| JWT Authentication | Medium | `good-first-issue` | Replace role-based ID passing with JWT tokens |
+| Email notifications | Medium | `feature-request` | Integrate SendGrid for deadline/grade alerts |
+| SQLite database backend | Medium | `feature-request` | Implement database stubs in `repositories/database/` |
+| React student dashboard | High | `feature-request` | Frontend for deadline tracking and submissions |
+| Docker support | Medium | `feature-request` | `Dockerfile` and `docker-compose.yml` |
+
+See [ROADMAP.md](./ROADMAP.md) for the full list of planned features.
+
+---
+
+
 
 This project uses **GitHub Actions** for automated testing and releases.
 
@@ -443,10 +475,7 @@ Development tracked using GitHub's native tooling:
 
 ---
 
-## 👤 Author 
+## 👤 Author
 
-**Mongameli Shasha** 
-Student Number: **219181527** 
-GitHub: [github.com/219181527](https://github.com/219181527) 
-
----
+**Mongameli Shasha**
+GitHub: [github.com/219181527](https://github.com/219181527)
